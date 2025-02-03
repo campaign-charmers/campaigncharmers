@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campaign Charmers | Workflow Automation Services</title>
+  <!-- AOS Library CSS for Animations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Highlight Class for Important Words */
+    .highlight {
+      background: #ffeb3b;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    /* Header: Playful Title */
+    header {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    header h1 span:nth-child(1) {
+      display: inline-block;
+      font-size: 4rem;
+      transform: rotate(-10deg);
+      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    header h1 span:nth-child(2) {
+      display: inline-block;
+      font-size: 2.5rem;
+      transform: rotate(15deg);
+      text-shadow: -3px -3px 10px rgba(0, 0, 0, 0.2);
+      margin-left: 10px;
+    }
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle, #fbc2eb 0%, #a6c1ee 100%);
+      padding: 120px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: #fff;
+      animation: slideInDown 1s ease-out;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #f8f8f8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    /* Shifted CTA: margin-top increased for better spacing */
+    .hero .cta-btn {
+      background-color: #ff6600;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      margin-top: 40px;
+      display: inline-block;
+    }
+    .hero .cta-btn:hover {
+      transform: scale(1.05);
+      background-color: #e55c00;
+    }
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* About Us Section: Two-Column Layout Without Image */
+    .about {
+      background: #fff;
+      padding: 80px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .about .about-text {
+      flex: 1 1 500px;
+      max-width: 600px;
+      position: relative;
+      text-align: justify;
+    }
+    .about .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .about .about-text h2::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: #ff6600;
+      bottom: -10px;
+      left: 0;
+      border-radius: 2px;
+    }
+    .about .about-text p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    /* Creative Lever-Like Element Instead of Picture */
+    .about .lever {
+      flex: 1 1 300px;
+      max-width: 400px;
+      height: 200px;
+      position: relative;
+      background: linear-gradient(135deg, #ffeb3b, #ffc107);
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      transform: rotate(-5deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: bold;
+      animation: leverSwing 3s ease-in-out infinite;
+    }
+    @keyframes leverSwing {
+      0% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+      100% { transform: rotate(-5deg); }
+    }
+    /* Services Section: Creative Cards */
+    .services {
+      background: #f8f8f8;
+      padding: 80px 20px;
+    }
+    .services h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+    .services h2::after {
+      content: "";
+      position: absolute;
+      width: 60%;
+      height: 3px;
+      background: #ff6600;
+      bottom: -8px;
+      left: 20%;
+      border-radius: 2px;
+    }
+    .services .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .services .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .services .card::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 102, 0, 0.15);
+      border-radius: 50%;
+      animation: pulse 4s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.8); opacity: 0.7; }
+    }
+    .services .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: #ff6600;
+    }
+    .services .card p {
+      font-size: 1rem;
+      color: #666;
+    }
+    /* Process Section: Vertical Timeline */
+    .process {
+      background: #fff;
+      padding: 80px 20px;
+      position: relative;
+    }
+    .process h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+    }
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: #ff6600;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      padding: 20px 30px;
+      position: relative;
+      width: 50%;
+    }
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 4px solid #ff6600;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .timeline-item:nth-child(odd)::after {
+      right: -10px;
+    }
+    .timeline-item:nth-child(even)::after {
+      left: -10px;
+    }
+    .timeline-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #ff6600;
+    }
+    .timeline-item p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    /* Pricing Section: Rotated Cards */
+    .pricing {
+      background: linear-gradient(135deg, #d4fc79, #96e6a1);
+      padding: 80px 20px;
+    }
+    .pricing h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    .pricing .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .pricing .plan {
+      background: #fff;
+      padding: 30px;
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .pricing .plan:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+    .pricing .plan h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #ff6600;
+      text-align: center;
+    }
+    .pricing .plan h4 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: #333;
+      text-align: center;
+    }
+    .pricing .plan p {
+      font-size: 1rem;
+      color: #666;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .pricing .plan .benefits {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    .pricing .plan .benefits li {
+      padding: 5px 0;
+      border-bottom: 1px dotted #ddd;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .pricing .plan .cta-btn {
+      display: block;
+      text-align: center;
+      background-color: #ff6600;
+      color: #fff;
+      padding: 12px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+    }
+    .pricing .plan .cta-btn:hover {
+      background-color: #e55c00;
+    }
+    /* FAQ Section: Creative Accordion Layout */
+    .faq {
+      background: #fff;
+      padding: 80px 20px;
+    }
+    .faq h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: #f8f8f8;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transform: perspective(600px) rotateY(90deg);
+      animation: rotateIn 0.8s forwards;
+    }
+    @keyframes rotateIn {
+      to { transform: perspective(600px) rotateY(0deg); }
+    }
+    .faq-question {
+      background: #ff6600;
+      padding: 15px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question h3 {
+      color: #fff;
+      font-size: 1.6rem;
+    }
+    .faq-question .toggle-icon {
+      font-size: 1.5rem;
+      color: #fff;
+      transition: transform 0.3s ease;
+    }
+    .faq-answer {
+      padding: 20px;
+      background: #fff;
+      font-size: 1.1rem;
+      color: #555;
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+      animation: slideDown 0.5s ease-out;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .faq-item.active .toggle-icon {
+      transform: rotate(45deg);
+    }
+    /* Testimonials Section: Grid Layout */
+    .testimonials {
+      background: #fff;
+      padding: 80px 20px;
+    }
+    .testimonials h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .testimonials h2::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: #ff6600;
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+    .testimonials .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .testimonials .testimonial {
+      background: #f8f8f8;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .testimonials .testimonial p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    .testimonials .testimonial .name {
+      font-weight: 700;
+      color: #ff6600;
+      text-align: right;
+      font-size: 0.95rem;
+    }
+    /* Extra CTA Section: Full-Width Banner */
+    .extra-cta {
+      background: url('https://via.placeholder.com/1600x400') no-repeat center center/cover;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .extra-cta::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .extra-cta h3 {
+      font-size: 2.5rem;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 20px;
+      animation: bounceIn 1.2s ease-out;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); opacity: 1; }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+    .extra-cta .cta-btn {
+      position: relative;
+      z-index: 2;
+      background-color: #ff6600;
+      color: #fff;
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+    .extra-cta .cta-btn:hover {
+      background-color: #e55c00;
+    }
+    /* Footer Section */
+    footer {
+      background: #222;
+      color: #ddd;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    footer p {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: #ff6600;
+      font-weight: bold;
+    }
+    footer form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    footer form input[type="email"] {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      width: 250px;
+    }
+    footer form button {
+      padding: 12px 25px;
+      border: none;
+      background-color: #ff6600;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    footer form button:hover {
+      background-color: #e55c00;
+    }
+    /* Responsive Adjustments */
+    @media(max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      .hero h2 { font-size: 2.2rem; }
+      .about { flex-direction: column; }
+      .timeline-item { width: 100%; text-align: left !important; }
+      .timeline::before { left: 20px; }
+      .timeline-item::after { left: 10px !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header: Playful Title -->
+  <header data-aos="fade-down" data-aos-duration="1000">
+    <h1>
+      <span>Campaign</span>
+      <span>Charmers</span>
+    </h1>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" data-aos="zoom-in" data-aos-duration="1200">
+    <h2>Boost Your Business with <span class="highlight">Automation Magic</span>!</h2>
+    <p>Experience the revolutionary power of <span class="highlight">streamlined workflows</span> that transform mundane tasks into dynamic growth opportunities. Let your business soar as we automate and <span class="highlight">innovate</span>!</p>
+    <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Get Started Now!</a>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="about" data-aos="fade-right" data-aos-duration="1200">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>At Campaign Charmers, we are a team of relentless innovators and automation enthusiasts. We believe every business has a unique story, and our mission is to unlock your <span class="highlight">true potential</span> by transforming everyday processes into extraordinary success stories.</p>
+      <p class="emphasis">We break the mold, defy the ordinary, and infuse creativity into every line of code and every workflow we craft.</p>
+    </div>
+    <!-- Creative Lever-Like Decorative Element Instead of an Image -->
+    <div class="lever" data-aos="fade-left" data-aos-duration="1200">
+      Lever of Innovation
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" data-aos="flip-up" data-aos-duration="1200">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card" data-aos="fade-right" data-aos-duration="1000">
+        <h3>Automation Strategy</h3>
+        <p>We craft bespoke automation plans that revolutionize your business processes and maximize efficiency.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-duration="1000">
+        <h3>Workflow Integration</h3>
+        <p>Seamlessly connect your existing tools with cutting-edge technology to create a fluid, integrated system.</p>
+      </div>
+      <div class="card" data-aos="fade-left" data-aos-duration="1000">
+        <h3>Ongoing Optimization</h3>
+        <p>Continuous improvement and support ensure your systems adapt and evolve with your business needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section: Vertical Timeline -->
+  <section class="process" data-aos="fade-up" data-aos-duration="1200">
+    <h2>Our Process</h2>
+    <div class="timeline">
+      <div class="timeline-item" data-aos="flip-right" data-aos-duration="1000">
+        <h3>Step 1: Discovery</h3>
+        <p>We analyze your current operations to unearth opportunities and challenges.</p>
+      </div>
+      <div class="timeline-item" data-aos="flip-left" data-aos-duration="1000">
+        <h3>Step 2: Implementation</h3>
+        <p>Our experts design and integrate custom automation solutions that perfectly fit your needs.</p>
+      </div>
+      <div class="timeline-item" data-aos="flip-right" data-aos-duration="1000">
+        <h3>Step 3: Optimization</h3>
+        <p>We continually refine and support your systems, ensuring optimal performance and scalability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section: Rotated Cards -->
+  <section class="pricing" data-aos="zoom-out" data-aos-duration="1200">
+    <h2>Pricing Options</h2>
+    <div class="plans">
+      <div class="plan" data-aos="fade-up" data-aos-duration="1000">
+        <h3>One-Time Project</h3>
+        <h4>$2500</h4>
+        <p>Complete automation setup and strategy development.</p>
+        <ul class="benefits">
+          <li>Custom workflow design</li>
+          <li>Seamless integration</li>
+          <li>Full support during implementation</li>
+        </ul>
+        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Choose Plan</a>
+      </div>
+      <div class="plan" data-aos="fade-up" data-aos-duration="1000">
+        <h3>Premium One-Time</h3>
+        <h4>$4500</h4>
+        <p>Advanced integration with extra features and extended support.</p>
+        <ul class="benefits">
+          <li>All One-Time features</li>
+          <li>Priority support</li>
+          <li>Enhanced integrations</li>
+        </ul>
+        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Choose Plan</a>
+      </div>
+      <div class="plan" data-aos="fade-up" data-aos-duration="1000">
+        <h3>Recurring</h3>
+        <h4>$3000/month</h4>
+        <p>All-inclusive package with continuous optimization and support.</p>
+        <ul class="benefits">
+          <li>Full automation suite</li>
+          <li>Ongoing improvements</li>
+          <li>24/7 support</li>
+        </ul>
+        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Choose Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: Creative Accordion Layout -->
+  <section class="faq" data-aos="fade-up" data-aos-duration="1200">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question" data-aos="fade-right" data-aos-duration="500">
+          <h3>What is workflow automation?</h3>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer" data-aos="fade-left" data-aos-duration="500">
+          <p>Workflow automation is the process of automating manual tasks, processes, and workflows within your business to enhance efficiency, productivity, and scalability.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" data-aos="fade-right" data-aos-duration="600">
+          <h3>How will automation benefit my business?</h3>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer" data-aos="fade-left" data-aos-duration="600">
+          <p>By automating repetitive tasks, you'll save time, reduce errors, improve customer satisfaction, and allow your team to focus on high-value tasks.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" data-aos="fade-right" data-aos-duration="700">
+          <h3>Is automation expensive?</h3>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer" data-aos="fade-left" data-aos-duration="700">
+          <p>Not necessarily! Automation can be an affordable investment that leads to greater long-term savings. We offer scalable options to suit various budgets.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" data-aos="fade-right" data-aos-duration="800">
+          <h3>How does the setup process work?</h3>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer" data-aos="fade-left" data-aos-duration="800">
+          <p>Our team collaborates with you to assess your needs, develop a custom workflow plan, and implement the automation system for a seamless transition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" data-aos="fade-up" data-aos-duration="1200">
+    <h2>What Our Clients Say</h2>
+    <div class="grid">
+      <div class="testimonial" data-aos="flip-right" data-aos-duration="1000">
+        <p>"Campaign Charmers revolutionized our processes. Their creative automation strategies saved us so much time!"</p>
+        <div class="name">- Alex Johnson</div>
+      </div>
+      <div class="testimonial" data-aos="flip-left" data-aos-duration="1000">
+        <p>"The integration was seamless and the ongoing support truly sets them apart. Our productivity skyrocketed!"</p>
+        <div class="name">- Maria Gonzalez</div>
+      </div>
+      <div class="testimonial" data-aos="zoom-in" data-aos-duration="1000">
+        <p>"Every solution was crafted with precision and creativity. They turned our operations into a well-oiled machine!"</p>
+        <div class="name">- Liam Smith</div>
+      </div>
+      <div class="testimonial" data-aos="slide-up" data-aos-duration="1000">
+        <p>"From consultation to execution, the entire process was fun and transformative. Campaign Charmers truly delivers!"</p>
+        <div class="name">- Emily Davis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extra CTA Section -->
+  <section class="extra-cta" data-aos="fade-in" data-aos-duration="1200">
+    <h3>Ready to Break the Mold?</h3>
+    <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Schedule Your Free Consultation</a>
+  </section>
+
+  <!-- Footer Section -->
+  <footer data-aos="fade-up" data-aos-duration="1000">
+    <p>Have questions? Contact us at <a href="mailto:hello@campaigncharmers.com">hello@campaigncharmers.com</a></p>
+    <form action="mailto:hello@campaigncharmers.com" method="post" enctype="text/plain">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Send Email</button>
+    </form>
+    <p>&copy; 2025 Campaign Charmers. All rights reserved.</p>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // FAQ Toggle Script
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
