@@ -81,20 +81,55 @@
       max-width: 800px;
       margin: 0 auto;
     }
-    /* Shifted CTA: margin-top increased for better spacing */
-    .hero .cta-btn {
-      background-color: #ff6600;
-      color: #fff;
+    /* CTA Button Base */
+    .cta-btn {
       padding: 15px 30px;
       font-size: 1.1rem;
       border-radius: 50px;
       transition: transform 0.3s ease, background-color 0.3s ease;
-      margin-top: 40px;
       display: inline-block;
     }
-    .hero .cta-btn:hover {
+    .cta-btn:hover {
       transform: scale(1.05);
-      background-color: #e55c00;
+    }
+    /* Unique CTA Animations */
+    .hero .cta-btn {
+      background-color: #ff6600;
+      color: #fff;
+    }
+    /* Hero CTA Bounce Animation */
+    @keyframes heroBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .hero .cta-btn.hero-btn {
+      animation: heroBounce 2s infinite;
+    }
+    .pricing .cta-btn {
+      background-color: #ff6600;
+      color: #fff;
+    }
+    /* Pricing CTA: Subtle rotation pulse */
+    @keyframes pricingPulse {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(5deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .pricing .cta-btn.pricing-btn {
+      animation: pricingPulse 2s infinite;
+    }
+    .extra-cta .cta-btn {
+      background-color: #ff6600;
+      color: #fff;
+    }
+    /* Extra CTA: Gentle shake animation */
+    @keyframes extraShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(10px); }
+      75% { transform: translateX(-10px); }
+    }
+    .extra-cta .cta-btn.extra-btn {
+      animation: extraShake 2s infinite;
     }
     @keyframes slideInDown {
       from {
@@ -143,7 +178,7 @@
       margin-bottom: 20px;
       line-height: 1.8;
     }
-    /* Creative Lever-Like Element Instead of Picture */
+    /* Creative Lever-Like Element Instead of an Image */
     .about .lever {
       flex: 1 1 300px;
       max-width: 400px;
@@ -293,7 +328,7 @@
       font-size: 0.95rem;
       color: #555;
     }
-    /* Pricing Section: Rotated Cards */
+    /* Pricing Section: Rotated Cards with Price Comparison */
     .pricing {
       background: linear-gradient(135deg, #d4fc79, #96e6a1);
       padding: 80px 20px;
@@ -329,34 +364,29 @@
       color: #ff6600;
       text-align: center;
     }
-    .pricing .plan h4 {
-      font-size: 1.6rem;
-      margin-bottom: 15px;
-      color: #333;
-      text-align: center;
-    }
+    /* Removed extra <h4> so that price is shown only once */
     .pricing .plan p {
       font-size: 1rem;
       color: #666;
       text-align: center;
       margin-bottom: 20px;
     }
-    .pricing .plan .benefits {
-      list-style: none;
-      padding: 0;
+    .pricing .plan .price-comparison {
+      text-align: center;
       margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #ff6600;
+      font-weight: bold;
     }
-    .pricing .plan .benefits li {
-      padding: 5px 0;
-      border-bottom: 1px dotted #ddd;
-      font-size: 0.95rem;
-      color: #555;
+    .pricing .plan .original-price {
+      text-decoration: line-through;
+      font-size: 1.2rem;
+      color: #999;
+      margin-right: 10px;
     }
     .pricing .plan .cta-btn {
       display: block;
       text-align: center;
-      background-color: #ff6600;
-      color: #fff;
       padding: 12px;
       border-radius: 30px;
       transition: background-color 0.3s ease;
@@ -384,7 +414,6 @@
       margin-bottom: 15px;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transform: perspective(600px) rotateY(90deg);
       animation: rotateIn 0.8s forwards;
     }
@@ -506,14 +535,16 @@
     .extra-cta .cta-btn {
       position: relative;
       z-index: 2;
+      transition: background-color 0.3s ease;
+    }
+    .extra-cta .cta-btn.extra-btn {
       background-color: #ff6600;
       color: #fff;
       padding: 15px 35px;
       font-size: 1.1rem;
       border-radius: 50px;
-      transition: background-color 0.3s ease;
     }
-    .extra-cta .cta-btn:hover {
+    .extra-cta .cta-btn.extra-btn:hover {
       background-color: #e55c00;
     }
     /* Footer Section */
@@ -580,7 +611,7 @@
   <section class="hero" data-aos="zoom-in" data-aos-duration="1200">
     <h2>Boost Your Business with <span class="highlight">Automation Magic</span>!</h2>
     <p>Experience the revolutionary power of <span class="highlight">streamlined workflows</span> that transform mundane tasks into dynamic growth opportunities. Let your business soar as we automate and <span class="highlight">innovate</span>!</p>
-    <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Get Started Now!</a>
+    <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn hero-btn">Get Started Now!</a>
   </section>
 
   <!-- About Us Section -->
@@ -634,42 +665,51 @@
     </div>
   </section>
 
-  <!-- Pricing Section: Rotated Cards -->
+  <!-- Pricing Section: Rotated Cards with Price Comparison -->
   <section class="pricing" data-aos="zoom-out" data-aos-duration="1200">
     <h2>Pricing Options</h2>
     <div class="plans">
       <div class="plan" data-aos="fade-up" data-aos-duration="1000">
         <h3>One-Time Project</h3>
-        <h4>$2500</h4>
+        <p class="price-comparison">
+          <span class="original-price">$3000</span>
+          <span class="discount-price">$2500</span>
+        </p>
         <p>Complete automation setup and strategy development.</p>
         <ul class="benefits">
           <li>Custom workflow design</li>
           <li>Seamless integration</li>
           <li>Full support during implementation</li>
         </ul>
-        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Choose Plan</a>
+        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn pricing-btn">Choose Plan</a>
       </div>
       <div class="plan" data-aos="fade-up" data-aos-duration="1000">
         <h3>Premium One-Time</h3>
-        <h4>$4500</h4>
+        <p class="price-comparison">
+          <span class="original-price">$5500</span>
+          <span class="discount-price">$4500</span>
+        </p>
         <p>Advanced integration with extra features and extended support.</p>
         <ul class="benefits">
           <li>All One-Time features</li>
           <li>Priority support</li>
           <li>Enhanced integrations</li>
         </ul>
-        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Choose Plan</a>
+        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn pricing-btn">Choose Plan</a>
       </div>
       <div class="plan" data-aos="fade-up" data-aos-duration="1000">
         <h3>Recurring</h3>
-        <h4>$3000/month</h4>
+        <p class="price-comparison">
+          <span class="original-price">$3500/month</span>
+          <span class="discount-price">$3000/month</span>
+        </p>
         <p>All-inclusive package with continuous optimization and support.</p>
         <ul class="benefits">
           <li>Full automation suite</li>
           <li>Ongoing improvements</li>
           <li>24/7 support</li>
         </ul>
-        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Choose Plan</a>
+        <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn pricing-btn">Choose Plan</a>
       </div>
     </div>
   </section>
@@ -743,7 +783,7 @@
   <!-- Extra CTA Section -->
   <section class="extra-cta" data-aos="fade-in" data-aos-duration="1200">
     <h3>Ready to Break the Mold?</h3>
-    <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn">Schedule Your Free Consultation</a>
+    <a href="https://calendly.com/hello-campaigncharmers/30min" class="cta-btn extra-btn">Schedule Your Free Consultation</a>
   </section>
 
   <!-- Footer Section -->
